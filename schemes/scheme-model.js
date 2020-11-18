@@ -31,7 +31,7 @@ async function findSteps(id) {
 		const steps = await db('schemes as s')
 			.join('steps as st', 's.id', 'st.scheme_id')
 			.where({ scheme_id: id })
-			.select('st.step_number', 's.scheme_name', 'st.instructions');
+			.select('s.id', 's.scheme_name', 'st.step_number', 'st.instructions');
 		return steps;
 	} catch (err) {
 		throw err;
